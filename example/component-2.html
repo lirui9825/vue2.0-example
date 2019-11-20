@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-2组件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-2组件</h1>
+    <hr>
+    <div id="app">
+        <panda :from-here="message"></panda>
+        <myinput v-model="phone"></myinput>
+        {{phone}}
+    </div>
+
+    <script type="text/javascript">
+       
+        var app = new Vue({
+            el:"#app",
+            data:{
+                message:'四川',
+                phone:'110'
+            },
+            components:{
+                "panda":{
+                    template:`<div>Panda from {{fromHere}}</div>`,
+                    props:['fromHere']
+                },
+                "myinput":{
+                    template:`<input type="text" :value="newValue" @input="handleInput" placeholder="自定义">`,
+                    props:['value'],
+                    data:function(){
+                        return{
+                         newValue:this.value
+                        }
+                    },
+                    methods: {
+                        handleInput(event) {
+                        var value = event.target.value;
+                        this.$emit('input', value); //触发 input 事件，并传入新值
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

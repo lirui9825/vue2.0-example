@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue.set 全局操作</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.set 全局操作</h1>
+    <hr>
+    <div id="app">
+        {{count}}
+        <ul>
+            <li v-for="item in arr">{{item}}</li>
+        </ul>
+    </div>
+    <button onclick="add()">add</button>
+
+    <script type="text/javascript">
+        function add(){
+            // Vue.set(outData,'count',2);
+            // app.count++;
+            // outData.count++;
+
+            // app.arr[1]='ddd';//无效
+            Vue.set(app.arr,1,'ddd');//vue检测不到虚拟DOM下标，所以提供vue.set通过下标改变数组值
+        }
+        var outData={
+            count:1,
+            arr:['aaa','bbb','ccc']
+        }
+        var app = new Vue({
+            el:"#app",
+            data:outData
+        })
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-3组件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-3组件</h1>
+    <hr>
+    <div id="app">
+        <panda></panda>
+    </div>
+
+    <script type="text/javascript">
+        var child = {
+            template:`<div>我是子组件:sichuan of china!</div>`
+        }
+        var pandaComponent = {
+            template:`<div>
+            我是构造器外的声明的局部组件:panda of china!
+            <child></child>
+            </div>`,
+            components:{
+                "child":child
+            }
+        }
+        var app = new Vue({
+            el:"#app",
+            components:{
+                "panda":pandaComponent
+            }
+        })
+    </script>
+
+</body>
+</html>

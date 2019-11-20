@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>computed Option</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>computed Option</h1>
+    <hr>
+    <div id="app">
+        <p>{{price}}</p>
+        {{newPrice}}
+        <ul>
+            <li v-for="item in reversNews">{{item.title}}--{{item.date}}</li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var newsList=[
+            {title:'决胜未来 习近平为科技人才指明方向',date:'2018/6/3'},
+            {title:'习近平的海洋情怀 构建生态文明体系',date:'2018/6/5'},
+            {title:'＠党员干部，总书记手把手教你用马哲',date:'2018/6/5'},
+            {title:'凝聚团结互信新力量 2018上合峰会',date:'2018/6/6'}
+        ]
+        var app = new Vue({
+            el:"#app",
+            data:{
+                price:100,
+                newsList:newsList
+            },
+            computed:{
+                newPrice:function(){
+                    return '￥' + this.price + '元';
+                },
+                reversNews:function(){
+                    return this.newsList.reverse();
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

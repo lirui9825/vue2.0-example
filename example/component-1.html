@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>component-1组件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>component-1组件</h1>
+    <hr>
+    <div id="app">
+        <lirui></lirui>
+        <jspang></jspang>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('lirui',{
+            template:`<div>我是全局组件</div>`
+        })
+        var app = new Vue({
+            el:"#app",
+            components:{
+                "jspang":{
+                    template:`<div>我是局部组件</div>`
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>
